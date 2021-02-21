@@ -4,7 +4,7 @@ const http = require('http');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const Validator = require ('express-validator');
+const { check, validationResult } = require('express-validator');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const Mongoose = require('mongoose');
@@ -45,7 +45,7 @@ module.exports = class Application {
         app.set('views', path.resolve('./resource/views'));
         app.use(bodyParser.json());
         app.use(bodyParser.urlencoded({ extended: true }));
-        // app.use(Validator());
+       
 
         app.use(session({
             secret: 'mysecretkey',
